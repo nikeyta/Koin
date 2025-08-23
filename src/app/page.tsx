@@ -11,10 +11,16 @@ export default async function Home() {
   }
   return (
     <>
-     <span>welcome back {user.firstName}</span>
+     {/* <span>welcome back {user.firstName}</span> */}
      <div>
       <AddRecord />
-      <AIInsights />
+      {/* <AIInsights />
+      <PrevTransactions /> */}
+     </div>
+     <div>
+      {/* <AIInsights /> */}
+     </div>
+     <div>
       <PrevTransactions />
      </div>
     </>

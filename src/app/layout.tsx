@@ -2,10 +2,14 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
-import Navbar from "../../components/Navbar";
-import { ThemeProvider } from "../../context/ThemeContext";
+import NavbarUser from "../../components/NavbarUser";
+// import { ThemeProvider } from "../../context/ThemeContext";
 import ClerkThemeProvider from "../../components/ClerkThemeProvider";
 import Footer from "../../components/Footer";
+import { ThemeProvider } from "@/components/ui/theme-provider";
+
+
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,18 +32,28 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ThemeProvider>
-    <ClerkThemeProvider>
-    <html lang="en">
+   
+   
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar />
+         <ThemeProvider
+    attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+    >
+       <ClerkThemeProvider>
+        <NavbarUser />
+      
         {children}
         <Footer/>
+         </ClerkThemeProvider>
+         </ThemeProvider>
       </body>
     </html>
-    </ClerkThemeProvider>
-    </ThemeProvider>
+   
+   
   );
 }

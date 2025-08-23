@@ -73,7 +73,7 @@ const PrevTransactions = async () => {
 
 
    return (
-    <div className='bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-4 sm:p-6 rounded-2xl shadow-xl border border-gray-100/50 dark:border-gray-700/50 hover:shadow-2xl'>
+    <div className='bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-4 sm:p-6 rounded-2xl shadow-xl border border-gray-100/50 dark:border-gray-700/50 hover:shadow-2xl m-5 md:m-15'>
       <div className='flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6'>
         <div className='w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-emerald-500 via-green-500 to-teal-500 rounded-xl flex items-center justify-center shadow-lg'>
           <span className='text-white text-sm sm:text-lg'>📝</span>
@@ -89,7 +89,10 @@ const PrevTransactions = async () => {
       </div>
       <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4'>
         {records.map((record: Record) => (
-          <RecordItem key={record.id} record={record} />
+          <div key={record.id} className='m-2 border-1 rounded-2xl p-4 border-gray-300'>
+                 <RecordItem  record={record} />
+          </div>
+         
         ))}
       </div>
     </div>

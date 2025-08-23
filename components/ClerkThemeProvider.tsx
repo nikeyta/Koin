@@ -2,14 +2,15 @@
 
 import { ClerkProvider } from '@clerk/nextjs';
 import { dark } from '@clerk/themes';
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from 'next-themes';
+// import { useTheme } from '../context/ThemeContext';
 
 
 
 export default function ClerkThemeProvider({
   children,
 }: ClerkThemeProviderProps) {
-  const { theme } = useTheme();
+  const { theme } = useTheme()
 
   return (
     <ClerkProvider
