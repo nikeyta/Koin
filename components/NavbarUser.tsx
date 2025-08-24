@@ -20,11 +20,11 @@ const Navbar = () => {
             <span className="text-emerald-700 dark:text-[#FFEAEA]  ">Home</span>
           </Link>
           <SignedOut>
-            <Link href="/#about">
+            <Link href="/#about&contact">
               <span className="text-emerald-700 dark:text-[#FFEAEA]  ">About</span>
             </Link>
           </SignedOut>
-          <Link href="/#contact">
+          <Link href="/#about&contact">
             <span className="text-emerald-700 dark:text-[#FFEAEA]  ">Contact</span>
           </Link>
            <SignedIn>

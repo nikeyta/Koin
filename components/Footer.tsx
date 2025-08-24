@@ -11,7 +11,7 @@ import {
 const Footer = () => {
   return (
     <footer
-      id="contact"
+      id="about&contact"
       className="bg-gradient-to-r from-emerald-500 to-teal-500 
                  dark:from-[#031914] dark:via-[#05241d] dark:to-[#08372d]  
                  border-t border-gray-200 dark:border-gray-700 w-full"
