@@ -14,7 +14,7 @@ const FlipLink: React.FC<FlipLinkProps> = ({ children, href }) => {
     <motion.a
       initial="initial"
       whileHover="hovered"
-      target="_blank"
+     
       href={href}
       className="relative block overflow-hidden whitespace-nowrap text-2xl font-semibold uppercase dark:text-white/90 sm:text-3xl md:text-4xl "
       style={{

@@ -7,11 +7,9 @@ const PrevTransactions = async () => {
 
   if (error) {
     return (
-      <div className="rounded-2xl shadow-lg p-8
+      <div className="shadow-lg 
                      
-           bg-white/10 dark:bg-neutral-800/20 
-                   
-                    backdrop-blur-xl border border-white/20 dark:border-gray-700/30  m">
+           glass-card rounded-2xl p-6 m-6 md:mx-35 ">
         <div className="flex items-center gap-3 mb-6">
           <div className="w-10 h-10 bg-gradient-to-br from-red-500 to-pink-500 rounded-xl flex items-center justify-center shadow-md">
             <span className="text-white text-lg">📝</span>
@@ -44,8 +42,7 @@ const PrevTransactions = async () => {
 
   if (!records || records.length === 0) {
     return (
-      <div className="  bg-white/10 dark:bg-neutral-800/20 
-                    backdrop-blur-xl border border-white/20 dark:border-gray-700/30   rounded-2xl shadow-lg p-6 text-center">
+      <div className="   glass-card rounded-2xl p-6 m-6 md:mx-35 text-center">
         <div className="flex items-center justify-center gap-3 mb-6">
           <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 via-green-500 to-teal-500 rounded-xl flex items-center justify-center shadow-md">
             <span className="text-white text-lg">📝</span>
@@ -71,17 +68,16 @@ const PrevTransactions = async () => {
   }
 
   return (
-    <div className="   bg-white/10 dark:bg-neutral-800/20 
-                    backdrop-blur-xl border border-white/20 dark:border-gray-700/30 rounded-2xl shadow-lg p-6 m-6 md:mx-15">
+    <div id='expenses' className="  glass-card rounded-2xl p-6 m-6 md:mx-35">
       <div className="flex items-center gap-3 mb-6">
-        <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 via-green-500 to-teal-500 rounded-xl flex items-center justify-center shadow-md">
+        <div className="w-10 h-10  rounded-xl flex items-center justify-center shadow-md">
           <span className="text-white text-lg">📝</span>
         </div>
         <div>
-          <h3 className="text-xl font-semibold text-gray-100">
+          <h3 className="text-xl  bg-gradient-to-r from-gray-800 via-emerald-700 to-teal-700  dark:from-gray-100 dark:via-emerald-300 dark:to-teal-300  bg-clip-text  text-transparent font-semibold ">
             Expense History
           </h3>
-          <p className="text-sm text-gray-400">
+          <p className="text-sm text-gray-600 dark:text-gray-400">
             Your spending timeline
           </p>
         </div>

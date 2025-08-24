@@ -42,11 +42,11 @@ const RecordTableRow = ({
 
   return (
     <TableRow key={record.id}>
-      <TableCell className="font-medium text-xs text-gray-100 uppercase">
+      <TableCell className="font-medium text-xs text-gray-600 dark:text-gray-100 uppercase">
         {formattedDate || ""}
       </TableCell>
       <TableCell>
-        <div className="max-w-[200px]  text-gray-100">
+        <div className="max-w-[200px] text-gray-600 dark:text-gray-100">
           <p className="truncate break-words line-clamp-2 text-sm">
             {record?.text}
           </p>
@@ -57,13 +57,13 @@ const RecordTableRow = ({
           <span className="text-base">
             {getCategoryEmoji(record?.category)}
           </span>
-          <span className="text-sm font-medium text-gray-300">
+          <span className="text-sm font-medium text-gray-600 dark:text-gray-300">
             {record?.category}
           </span>
         </div>
       </TableCell>
       <TableCell className="text-right">
-        <span className="text-lg font-bold text-gray-100">
+        <span className="text-lg font-bold text-gray-700 dark:text-gray-100">
           ₹{record?.amount.toFixed(2)}
         </span>
       </TableCell>

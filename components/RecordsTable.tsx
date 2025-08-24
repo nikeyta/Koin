@@ -40,12 +40,12 @@ const RecordsTable = ({ records }: RecordsTableProps) => {
 
     <Table className="overflow-scroll h-3">
       <TableHeader>
-        <TableRow className="text-gray-100">
-          <TableHead className="w-[120px] text-gray-100">Date</TableHead>
-          <TableHead className="text-gray-100">Description</TableHead>
-          <TableHead className="text-gray-100">Category</TableHead>
-          <TableHead className="text-right text-gray-100">Amount</TableHead>
-          <TableHead className="w-[60px] text-gray-100">Delete</TableHead>
+        <TableRow className="dark:text-gray-100">
+          <TableHead className="w-[120px] text-gray-600 dark:text-gray-100">Date</TableHead>
+          <TableHead className="text-gray-600 dark:text-gray-100">Description</TableHead>
+          <TableHead className="text-gray-600 dark:text-gray-100">Category</TableHead>
+          <TableHead className="text-right text-gray-600 dark:text-gray-100">Amount</TableHead>
+          <TableHead className="w-[60px] text-gray-600 dark:text-gray-100">Delete</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>

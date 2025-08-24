@@ -90,48 +90,54 @@ const AddRecordForm = () => {
   };
 
   return (
-    <div className="max-w-md mb-5 mr-5 md:ml-15 md:mt-15 ml-5 mt-5 rounded-2xl shadow-lg p-8
-                    bg-white/10 dark:bg-neutral-800/20 
-                    backdrop-blur-xl border border-white/20 dark:border-gray-700/30">
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-     
-        <h2 className="text-center text-lg font-semibold text-gray-100 mb-4 drop-shadow-md">
+    <div
+      className="relative md:mt-15 m-6 md:mx-25  rounded-3xl p-8 md:px-10 md:max-h-96
+                glass-card"
+    >
+      <div className="absolute inset-0 rounded-3xl pointer-events-none">
+        <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-white/30 to-transparent opacity-20 rounded-t-3xl" />
+      </div>
+
+      <form onSubmit={handleSubmit(onSubmit)} className="relative space-y-5">
+        <h2 className="text-center text-lg font-semibold  dark:text-white/90  bg-gradient-to-r from-gray-800 via-emerald-700 to-teal-700 
+                                   dark:from-gray-100 dark:via-emerald-300 dark:to-teal-300 
+                                   bg-clip-text text-transparent mb-4 drop-shadow">
           Add New Transaction
         </h2>
 
-       
-        <div className="text-xl font-bold text-center mb-6 text-white flex">
+        <div className="text-xl font-bold text-center mb-6 ">
           <input
             type="number"
             step="0.01"
             placeholder="0.00"
             {...register("amount", { required: true })}
-            className="w-full text-center text-3xl font-bold bg-transparent border-none text-white placeholder-gray-400 focus:outline-none"
+            className="w-full text-center text-3xl font-extrabold bg-transparent border-none 
+                       dark:text-white text-black flex placeholder-white/40 focus:outline-none"
           />
         </div>
 
-    
         <input
           type="date"
           {...register("date", { required: true })}
-          className="w-full rounded-lg border border-white/30 bg-white/10 text-white placeholder-gray-300 px-3 py-2 
-                     focus:ring-2 focus:ring-emerald-400 focus:outline-none backdrop-blur-sm"
+          className="w-full rounded-lg border border-white/30 bg-white/10 dark:text-white text-gray-600 flex placeholder-gray-300 px-3 py-2 
+                     focus:ring-2 focus:ring-emerald-400 focus:outline-none backdrop-blur-md shadow-sm"
         />
 
+  
         <div className="flex items-center gap-2">
           <input
             type="text"
             placeholder="Description"
             {...register("text", { required: true })}
-            className="flex-1 rounded-lg border border-white/30 bg-white/10 text-white placeholder-gray-300 px-3 py-2 
-                       focus:ring-2 focus:ring-emerald-400 focus:outline-none backdrop-blur-sm"
+            className="flex-1 rounded-lg border border-white/30 bg-white/10 dark:text-white text-gray-600 dark:placeholder-gray-300 placeholder-gray-600 px-3 py-2 
+                       focus:ring-2 focus:ring-emerald-400 focus:outline-none backdrop-blur-md shadow-sm"
           />
           <button
             type="button"
             onClick={handleAISuggestCategory}
             disabled={isCategorising || !description?.trim()}
-            className="px-3 py-2 rounded-lg border border-white/30 bg-white/10 text-white 
-                       hover:bg-white/20 transition backdrop-blur-sm"
+            className="px-3 py-2 rounded-lg border border-white/30 bg-white/10 dark:text-white text-gray-600 
+                       hover:bg-white/20 transition backdrop-blur-md shadow-sm"
           >
             {isCategorising ? (
               <div className="w-4 h-4 border-2 border-white border-t-emerald-400 rounded-full animate-spin"></div>
@@ -141,11 +147,11 @@ const AddRecordForm = () => {
           </button>
         </div>
 
-     
+        {/* Category */}
         <select
           {...register("category", { required: true })}
-          className="w-full rounded-lg border border-white/30 bg-white/10 text-white placeholder-gray-300 px-3 py-2 
-                     focus:ring-2 focus:ring-emerald-400 focus:outline-none backdrop-blur-sm"
+          className="w-full rounded-lg border border-white/30 bg-white/10 dark:text-white text-gray-600 placeholder-gray-600 dark:placeholder-gray-300 px-3 py-2 
+                     focus:ring-2 focus:ring-emerald-400 focus:outline-none backdrop-blur-md shadow-sm"
         >
           <option value="">Select category</option>
           <option value="Food">🍔 Food & Dining</option>
@@ -156,22 +162,20 @@ const AddRecordForm = () => {
           <option value="Healthcare">🏥 Healthcare</option>
           <option value="Other">📦 Other</option>
         </select>
-
-       
-        <button
+       <button
           type="submit"
           disabled={isLoading}
-          className="w-full rounded-xl bg-emerald-500/80 text-white py-3 font-medium hover:bg-emerald-600/90 
-                     transition disabled:opacity-50 backdrop-blur-sm shadow-lg"
+          className="w-full rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white py-3 
+                     font-medium hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] 
+                     transition disabled:opacity-50 backdrop-blur-md shadow-lg"
         >
           {isLoading ? "Adding..." : "Add Transaction"}
         </button>
       </form>
 
-  
       {alertMessage && (
         <div
-          className={`mt-4 p-3 rounded-lg border-l-4 text-sm backdrop-blur-md ${
+          className={`mt-4 p-3 rounded-lg border-l-4 text-sm backdrop-blur-md shadow-inner ${
             alertType === "success"
               ? "bg-emerald-500/20 border-l-emerald-400 text-emerald-200"
               : "bg-red-500/20 border-l-red-400 text-red-200"
