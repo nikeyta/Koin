@@ -15,9 +15,9 @@ declare interface ExpenseFormData {
 
 const AddRecordForm = () => {
   const [alertType, setAlertType] = useState<AlertType>("");
-  const [isLoading, setisLoading] = useState(false); // spinner for submit
+  const [isLoading, setisLoading] = useState(false);
   const [isCategorising, setisCategorising] = useState(false);
-  const [alertMessage, setAlertMessage] = useState(""); //Stores success/error messages to show users
+  const [alertMessage, setAlertMessage] = useState("");
 
   const {
     register,
@@ -35,7 +35,7 @@ const AddRecordForm = () => {
     },
   });
 
-  const description = watch("text"); // monitors the description input field, to enable ai btn
+  const description = watch("text");
 
   const onSubmit = async (data: ExpenseFormData) => {
     try {
@@ -46,13 +46,13 @@ const AddRecordForm = () => {
         formData.append(Key, value.toString());
       });
 
-      const { error } = await addRecord(formData); //Send data to server
+      const { error } = await addRecord(formData);
       if (error) {
         setAlertMessage(`Error : ${error}`);
         setAlertType("error");
       } else {
         setAlertType("success");
-        setAlertMessage("expense added successfully");
+        setAlertMessage("Expense added successfully");
         reset();
       }
     } catch {
@@ -64,7 +64,7 @@ const AddRecordForm = () => {
 
   const handleAISuggestCategory = async () => {
     if (!description?.trim()) {
-      setAlertMessage("please enter a description");
+      setAlertMessage("Please enter a description");
       setAlertType("error");
       return;
     }
@@ -90,55 +90,62 @@ const AddRecordForm = () => {
   };
 
   return (
-    <div className="max-w-md  mb-5 mr-5 md:ml-15 md:mt-15 ml-5 mt-5 bg-white dark:bg-neutral-900 rounded-2xl shadow-lg p-6">
+    <div className="max-w-md mb-5 mr-5 md:ml-15 md:mt-15 ml-5 mt-5 rounded-2xl shadow-lg p-8
+                    bg-white/10 dark:bg-neutral-800/20 
+                    backdrop-blur-xl border border-white/20 dark:border-gray-700/30">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        {/* Big amount display */}
-        <h2 className="text-center text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+     
+        <h2 className="text-center text-lg font-semibold text-gray-100 mb-4 drop-shadow-md">
           Add New Transaction
         </h2>
-        <div className="text-xl font-bold text-center mb-6 text-gray-900 dark:text-gray-50 flex">
+
+       
+        <div className="text-xl font-bold text-center mb-6 text-white flex">
           <input
             type="number"
             step="0.01"
             placeholder="0.00"
             {...register("amount", { required: true })}
-            className="w-full text-center text-2xl font-bold bg-transparent border-none focus:outline-none"
+            className="w-full text-center text-3xl font-bold bg-transparent border-none text-white placeholder-gray-400 focus:outline-none"
           />
         </div>
 
-        {/* Date */}
+    
         <input
           type="date"
           {...register("date", { required: true })}
-          className="w-full rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-neutral-800 px-3 py-2 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          className="w-full rounded-lg border border-white/30 bg-white/10 text-white placeholder-gray-300 px-3 py-2 
+                     focus:ring-2 focus:ring-emerald-400 focus:outline-none backdrop-blur-sm"
         />
 
-        {/* Description + AI Suggest */}
         <div className="flex items-center gap-2">
           <input
             type="text"
             placeholder="Description"
             {...register("text", { required: true })}
-            className="flex-1 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-neutral-800 px-3 py-2 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            className="flex-1 rounded-lg border border-white/30 bg-white/10 text-white placeholder-gray-300 px-3 py-2 
+                       focus:ring-2 focus:ring-emerald-400 focus:outline-none backdrop-blur-sm"
           />
           <button
             type="button"
             onClick={handleAISuggestCategory}
             disabled={isCategorising || !description?.trim()}
-            className="px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-neutral-800 hover:bg-gray-100 dark:hover:bg-neutral-700"
+            className="px-3 py-2 rounded-lg border border-white/30 bg-white/10 text-white 
+                       hover:bg-white/20 transition backdrop-blur-sm"
           >
             {isCategorising ? (
-              <div className="w-4 h-4 border-2 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
+              <div className="w-4 h-4 border-2 border-white border-t-emerald-400 rounded-full animate-spin"></div>
             ) : (
               "✨"
             )}
           </button>
         </div>
 
-        {/* Category */}
+     
         <select
           {...register("category", { required: true })}
-          className="w-full rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-neutral-800 px-3 py-2 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          className="w-full rounded-lg border border-white/30 bg-white/10 text-white placeholder-gray-300 px-3 py-2 
+                     focus:ring-2 focus:ring-emerald-400 focus:outline-none backdrop-blur-sm"
         >
           <option value="">Select category</option>
           <option value="Food">🍔 Food & Dining</option>
@@ -150,25 +157,27 @@ const AddRecordForm = () => {
           <option value="Other">📦 Other</option>
         </select>
 
+       
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full rounded-xl bg-[#004838] dark:bg-[#EBEDE8] text-white dark:text-black py-3 font-medium hover:bg-gray-800 transition disabled:opacity-50"
+          className="w-full rounded-xl bg-emerald-500/80 text-white py-3 font-medium hover:bg-emerald-600/90 
+                     transition disabled:opacity-50 backdrop-blur-sm shadow-lg"
         >
           {isLoading ? "Adding..." : "Add Transaction"}
         </button>
       </form>
 
-      {/* Alert */}
+  
       {alertMessage && (
         <div
-          className={`mt-4 p-3 rounded-lg border-l-4 ${
+          className={`mt-4 p-3 rounded-lg border-l-4 text-sm backdrop-blur-md ${
             alertType === "success"
-              ? "bg-green-50 border-l-green-500 text-green-800"
-              : "bg-red-50 border-l-red-500 text-red-800"
+              ? "bg-emerald-500/20 border-l-emerald-400 text-emerald-200"
+              : "bg-red-500/20 border-l-red-400 text-red-200"
           }`}
         >
-          <p className="text-sm">{alertMessage}</p>
+          <p>{alertMessage}</p>
         </div>
       )}
     </div>

@@ -1,15 +1,15 @@
 import Link from "next/link";
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaPhone } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaPhone, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   return (
     <footer
       id="contact"
-      className="bg-[#05241d] dark:bg-emerald-50 border-t border-gray-200 dark:border-gray-300"
+      className="bg-[#05241d] dark:bg-emerald-50 border-t border-gray-200 dark:border-gray-300 w-full"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-          {/* Spacer or Logo/Tagline */}
+         
           <div>
             <h2 className="text-xl font-bold text-white dark:text-[#073127] mb-2">
               KOIN
@@ -22,7 +22,7 @@ const Footer = () => {
           {/* Empty to balance grid */}
           <div></div>
 
-          {/* Features */}
+         
           <div>
             <h3 className="text-lg font-semibold text-white dark:text-[#073127] mb-4">
               Features
@@ -30,11 +30,11 @@ const Footer = () => {
             <div className="space-y-2 text-gray-300 dark:text-gray-700">
               <p>AI-Powered Insights</p>
               <p>Smart Categorization</p>
-              <p>Analytics Dashboard</p>
+              <p>Previous expense tracking</p>
             </div>
           </div>
 
-          {/* Contact Me Section */}
+         
           <div>
             <h3 className="text-lg font-semibold text-white dark:text-[#073127] mb-4">
               Contact Me
@@ -62,7 +62,7 @@ const Footer = () => {
                   <FaGithub size={20} />
                 </a>
                 <a
-                  href="https://linkedin.com/in/yourprofile"
+                  href="https://www.linkedin.com/in/nikita-nandmehar-60b901250/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-300 dark:text-gray-700 hover:text-emerald-400 dark:hover:text-emerald-600"
@@ -70,19 +70,18 @@ const Footer = () => {
                   <FaLinkedin size={20} />
                 </a>
                 <a
-                  href="https://twitter.com/yourprofile"
+                  href="https://www.instagram.com/atinikszn/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-300 dark:text-gray-700 hover:text-emerald-400 dark:hover:text-emerald-600"
                 >
-                  <FaTwitter size={20} />
+                  <FaInstagram size={20} />
                 </a>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
         <div className="border-t border-gray-200 dark:border-gray-300 pt-8 flex flex-col sm:flex-row justify-between items-center">
           <p className="text-gray-400 dark:text-gray-600 text-sm mb-4 sm:mb-0">
             © {new Date().getFullYear()} KOIN. All rights reserved.

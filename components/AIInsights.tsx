@@ -4,6 +4,7 @@ import {useState, useEffect} from 'react'
 import { AIInsight } from '../lib/ai';
 import getAIinsights from '@/app/actions/getAIinsights';
 
+
 const AIInsights = () => {
 
    const [insights, setInsights] = useState<AIInsight[]>([]);
@@ -30,8 +31,8 @@ const AIInsights = () => {
   return (
     <>
     
-    <div className="space-y-4 m-5">
-      <div className='md:text-4xl text-lg font-bold text-[#073127]'>AI Insights</div>
+    <div  className="space-y-4 m-15">
+      <div className='md:text-4xl text-lg font-bold text-[#EBEDE8]'>AI Insights</div>
       {insights.map((insight) => (
         <div
           key={insight.id}

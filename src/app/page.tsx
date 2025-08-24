@@ -4,25 +4,32 @@ import AddRecord from "../../components/AddRecordForm";
 import AIInsights from "../../components/AIInsights";
 import PrevTransactions from "../../components/PrevTransactions";
 
+
+
 export default async function Home() {
-  const user = await currentUser()
-  if(!user){
-    return <Guest />
+  const user = await currentUser();
+  if (!user) {
+    return <Guest />;
   }
+
   return (
     <>
-     {/* <span>welcome back {user.firstName}</span> */}
-     <div>
-      <AddRecord />
-      {/* <AIInsights />
-      <PrevTransactions /> */}
-     </div>
-     <div>
-      {/* <AIInsights /> */}
-     </div>
-     <div>
-      <PrevTransactions />
-     </div>
+  
+      <div className="bg-[#05241d] ">
+        
+        <div className="md:flex">
+          <div>
+            <AddRecord />
+          </div>
+          <div> </div>
+        </div>
+        <div>
+          <AIInsights />
+        </div>
+        <div>
+          <PrevTransactions />
+        </div>
+      </div>
     </>
   );
 }
