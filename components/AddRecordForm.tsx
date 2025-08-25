@@ -3,8 +3,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import addRecord from "@/app/actions/addRecordtoDb";
 import suggestCategory from "@/app/actions/suggestCategory";
+import { toast } from "sonner";
 
-declare type AlertType = "error" | "success" | "";
 
 declare interface ExpenseFormData {
   text: string;
@@ -14,10 +14,8 @@ declare interface ExpenseFormData {
 }
 
 const AddRecordForm = () => {
-  const [alertType, setAlertType] = useState<AlertType>("");
   const [isLoading, setisLoading] = useState(false);
   const [isCategorising, setisCategorising] = useState(false);
-  const [alertMessage, setAlertMessage] = useState("");
 
   const {
     register,
@@ -25,7 +23,6 @@ const AddRecordForm = () => {
     watch,
     setValue,
     reset,
-    formState: { errors },
   } = useForm({
     defaultValues: {
       text: "",
@@ -48,15 +45,13 @@ const AddRecordForm = () => {
 
       const { error } = await addRecord(formData);
       if (error) {
-        setAlertMessage(`Error : ${error}`);
-        setAlertType("error");
+        toast.error(`Error: ${error}`);
       } else {
-        setAlertType("success");
-        setAlertMessage("Expense added successfully");
+        toast.success("Expense added successfully!");
         reset();
       }
     } catch {
-      setAlertMessage("An unexpected error occurred. Please try again.");
+      toast.error("An unexpected error occurred. Please try again.");
     } finally {
       setisLoading(false);
     }
@@ -64,8 +59,7 @@ const AddRecordForm = () => {
 
   const handleAISuggestCategory = async () => {
     if (!description?.trim()) {
-      setAlertMessage("Please enter a description");
-      setAlertType("error");
+      toast.error("Please enter a description first");
       return;
     }
 
@@ -74,24 +68,22 @@ const AddRecordForm = () => {
     try {
       const { category, error } = await suggestCategory(description);
       if (error) {
-        setAlertMessage(`AI Suggestion error : ${error}`);
-        setAlertType("error");
+        toast.error(`AI Suggestion error: ${error}`);
       } else {
         setValue("category", category!);
-        setAlertType("success");
-        setAlertMessage(`AI successfully suggested a category`);
+        toast.success(`✨ AI suggested: ${category}`);
       }
-    } catch (error) {
-      setAlertMessage("Failed to get AI category");
-      setAlertType("error");
+    } catch {
+      toast.error("Failed to get AI category");
     } finally {
       setisCategorising(false);
     }
+  
   };
 
   return (
     <div
-      className="relative md:mt-15 m-6 md:mx-25  rounded-3xl p-8 md:px-10 md:max-h-96
+      className="relative md:mt-15 m-6 md:mx-25  rounded-3xl p-4 md:px-10 md:max-h-96
                 glass-card"
     >
       <div className="absolute inset-0 rounded-3xl pointer-events-none">
@@ -101,12 +93,14 @@ const AddRecordForm = () => {
       <form onSubmit={handleSubmit(onSubmit)} className="relative space-y-5">
         <h2 className="text-center text-lg font-semibold  dark:text-white/90  bg-gradient-to-r from-gray-800 via-emerald-700 to-teal-700 
                                    dark:from-gray-100 dark:via-emerald-300 dark:to-teal-300 
-                                   bg-clip-text text-transparent mb-4 drop-shadow">
+                                   bg-clip-text text-transparent mb-2 drop-shadow">
           Add New Transaction
         </h2>
 
-        <div className="text-xl font-bold text-center mb-6 ">
+        <div className="text-xl  text-center mb-4 ">
+          <label htmlFor="amount" className="text-gray-600 text-xs">Add amount</label>
           <input
+          id="amount"
             type="number"
             step="0.01"
             placeholder="0.00"
@@ -119,24 +113,24 @@ const AddRecordForm = () => {
         <input
           type="date"
           {...register("date", { required: true })}
-          className="w-full rounded-lg border border-white/30 bg-white/10 dark:text-white text-gray-600 flex placeholder-gray-300 px-3 py-2 
+          className="w-full rounded-lg border border-white/30 bg-white/10 dark:text-white text-gray-600 flex placeholder-gray-300 px-3 py-1 
                      focus:ring-2 focus:ring-emerald-400 focus:outline-none backdrop-blur-md shadow-sm"
         />
 
   
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
           <input
             type="text"
             placeholder="Description"
             {...register("text", { required: true })}
-            className="flex-1 rounded-lg border border-white/30 bg-white/10 dark:text-white text-gray-600 dark:placeholder-gray-300 placeholder-gray-600 px-3 py-2 
+            className="flex-1 rounded-lg border max-w-sm border-white/30 bg-white/10 dark:text-white text-gray-600 dark:placeholder-gray-300 placeholder-gray-600 px-3 py-1
                        focus:ring-2 focus:ring-emerald-400 focus:outline-none backdrop-blur-md shadow-sm"
           />
           <button
             type="button"
             onClick={handleAISuggestCategory}
             disabled={isCategorising || !description?.trim()}
-            className="px-3 py-2 rounded-lg border border-white/30 bg-white/10 dark:text-white text-gray-600 
+            className="px-3 py-1 justify-end rounded-lg border border-white/30 bg-white/10 dark:text-white text-gray-600 
                        hover:bg-white/20 transition backdrop-blur-md shadow-sm"
           >
             {isCategorising ? (
@@ -150,7 +144,7 @@ const AddRecordForm = () => {
         {/* Category */}
         <select
           {...register("category", { required: true })}
-          className="w-full rounded-lg border border-white/30 bg-white/10 dark:text-white text-gray-600 placeholder-gray-600 dark:placeholder-gray-300 px-3 py-2 
+          className="w-full rounded-lg border border-white/30 bg-white/10 dark:text-white text-gray-600 placeholder-gray-600 dark:placeholder-gray-300 px-3 py-1
                      focus:ring-2 focus:ring-emerald-400 focus:outline-none backdrop-blur-md shadow-sm"
         >
           <option value="">Select category</option>
@@ -165,7 +159,7 @@ const AddRecordForm = () => {
        <button
           type="submit"
           disabled={isLoading}
-          className="w-full rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white py-3 
+          className="w-full rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white py-2
                      font-medium hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] 
                      transition disabled:opacity-50 backdrop-blur-md shadow-lg"
         >
@@ -173,17 +167,7 @@ const AddRecordForm = () => {
         </button>
       </form>
 
-      {alertMessage && (
-        <div
-          className={`mt-4 p-3 rounded-lg border-l-4 text-sm backdrop-blur-md shadow-inner ${
-            alertType === "success"
-              ? "bg-emerald-500/20 border-l-emerald-400 text-emerald-200"
-              : "bg-red-500/20 border-l-red-400 text-red-200"
-          }`}
-        >
-          <p>{alertMessage}</p>
-        </div>
-      )}
+  
     </div>
   );
 };

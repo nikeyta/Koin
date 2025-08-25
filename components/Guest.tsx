@@ -6,10 +6,10 @@ import React from "react";
 
 const Guest = () => {
   return (
-    <div className="relative flex md:h-[calc(100vh-64px)] h-full w-full items-center justify-center bg-emerald-50 dark:bg-[#05241d] py-9 px-4 ">
+    <div className="relative flex md:min-h-screen h-full items-center justify-center bg-emerald-50 dark:bg-[#05241d] py-9  ">
       
-      <div className="relative z-20 text-center px-4">
-        <div className="grid lg:grid-cols-2 gap-10 mx-15 items-center">
+      <div className="relative z-20 text-center mt-20 mb-10 px-4">
+        <div className="grid lg:grid-cols-2 gap-10 md:mx-15 mx-auto items-center">
           <div>
             <h1 className="text-2xl md:text-5xl font-bold text-start dark:text-white text-[#073127] mb-6 leading-tight">
               <TextGenerateEffect words="Is your money vanishing faster than your weekend?" />
@@ -32,7 +32,7 @@ const Guest = () => {
 
 
 <CometCard >
-          <div className="relative">
+          <div className="relative px-4">
             <div className="bg-white rounded-3xl shadow-2xl p-10 max-w-sm mx-auto">
               <div className="mb-6">
                 <h3 className="text-gray-900 font-semibold mb-4">
@@ -104,7 +104,7 @@ const Guest = () => {
             </div>
 
             {/* sub cards */}
-            <div className="absolute md:-top-4 -top-10 -right-4  text-[10px]  bg-white rounded-2xl shadow-lg md:p-4 p-1 md:max-w-48 max-w-36">
+            <div className="absolute md:-top-4 -top-10 -right-4  text-[10px] mr-2 bg-white rounded-2xl shadow-lg md:p-4 p-1 md:max-w-48 max-w-36">
               <div className="flex items-center space-x-2 mb-2">
                 <div className="w-6 h-6 bg-emerald-100 rounded-full flex items-center justify-center">
                   <span className="md:text-xs  font-bold text-emerald-600">
@@ -121,7 +121,7 @@ const Guest = () => {
               </p>
             </div>
 
-            <div className="absolute -bottom-7 md:-left-1 -left-4 text-[10px] bg-white rounded-2xl shadow-lg md:p-4 p-1 max-w-48">
+            <div className="absolute -bottom-7 md:-left-1 -left-4 ml-2 text-[10px] bg-white rounded-2xl shadow-lg md:p-4 p-1 max-w-48">
               <div className="flex items-center space-x-2 mb-2">
                 <div className="w-6 h-6 bg-emerald-100 rounded-full flex items-center justify-center">
                   <span className="md:text-xs font-bold text-emerald-600">

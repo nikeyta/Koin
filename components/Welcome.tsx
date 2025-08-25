@@ -9,7 +9,7 @@ const Welcome = async () => {
     const date = today.getDate()
 
     return (
-        <div className='md:mt-15 m-6 md:mx-25  rounded-3xl p-6 md:px-20 md:max-h-96
+        <div className='md:mt-15 m-6 md:mx-25 mt-25 rounded-3xl p-6 md:px-20 md:max-h-96
                        glass-card'>
             <div className="absolute inset-0 rounded-3xl pointer-events-none">
                 <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/40 to-transparent opacity-20 rounded-t-3xl" />
@@ -26,7 +26,7 @@ const Welcome = async () => {
                             alt="user profile"
                         />
                     </div>
-                    <div className="absolute -bottom-1 -right-1 w-8 h-8 bg-gradient-to-r from-green-400 to-emerald-500 
+                    <div className="absolute -bottom-1 right-3 w-8 h-8 bg-gradient-to-r from-green-400 to-emerald-500 
                                     rounded-full border-[3px] border-white dark:border-gray-800 
                                     flex items-center justify-center shadow-md">
                         <span className="text-white text-xs font-bold">✓</span>
